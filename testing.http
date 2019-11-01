@@ -5,7 +5,7 @@ POST http://localhost:8080/api/scenarios
 Content-Type: application/json
 
 {
-  "repeat": 10,
+  "repeat": 30,
   "interval": 1,
   "taskDefinition": {
     "measurement": "m-0",
@@ -28,6 +28,38 @@ Content-Type: application/json
     }
   }
 }
+
+###
+# And another with m-1
+
+POST http://localhost:8080/api/scenarios
+Content-Type: application/json
+
+{
+  "repeat": 30,
+  "interval": 1,
+  "taskDefinition": {
+    "measurement": "m-1",
+    "critExpression": "\"f-0\" > 10"
+  },
+  "input": {
+    "measurements": {
+      "m-1": {
+        "fieldValues": {
+          "f-0": [
+            {
+              "value": 9
+            },
+            {
+              "value": 11
+            }
+          ]
+        }
+      }
+    }
+  }
+}
+
 
 ###
 # Delete (and stop) all scenarios
